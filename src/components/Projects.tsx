@@ -3,46 +3,52 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
+// استيراد الصور بمسارات نسبية من مجلد assets
+import project1Image from '../assets/Gemini_Generated_Image_f3tf12f3tf12f3tf.png'; // K8s Hard Way
+import project2Image from '../assets/Gemini_Generated_Image_r7gtqur7gtqur7gt.png'; // CI/CD End-to-End
+import project3Image from '../assets/Gemini_Generated_Image_2zdh6l2zdh6l2zdh.png'; // Google Boutique EKS
+import project4Image from '../assets/Gemini_Generated_Image_rk9pabrk9pabrk9p.png'; // LGTM Stack
+
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const projects = [
     {
-      title: 'Google Boutique Microservices Deployment',
+      title: 'Google Boutique Microservices (EKS)',
       description:
-        'Deployed and managed a complex microservices architecture using modern container orchestration.',
-      tags: ['Kubernetes', 'Docker', 'AWS'],
-      github: '#',
+        'Advanced deployment of Google Boutique microservices on AWS EKS using Terraform, Helm, and ArgoCD for GitOps.',
+      tags: ['EKS', 'Terraform', 'ArgoCD', 'AWS'],
+      github: 'https://github.com/tamer2004gf-ship-it/Ops-Mastery-EKS',
       live: '#',
-      image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: project3Image,
     },
     {
       title: 'Kubernetes The Hard Way (AWS)',
       description:
-        'Built a Kubernetes cluster from scratch to deeply understand its internal components and security.',
-      tags: ['K8s', 'AWS', 'Networking'],
-      github: '#',
+        'Bootstrapping a high-availability Kubernetes cluster from scratch on AWS to master networking, security, and control plane components.',
+      tags: ['K8s', 'AWS', 'Security', 'Linux'],
+      github: 'https://github.com/tamer2004gf-ship-it/Kubernetes_The_Hard_Way',
       live: '#',
-      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: project1Image,
     },
     {
-      title: 'Enterprise Monitoring Suite',
+      title: 'Enterprise Monitoring (LGTM Stack)',
       description:
-        'Implemented a comprehensive observability stack (Logs, Metrics, Traces) for infrastructure monitoring.',
-      tags: ['LGTM Stack', 'OpenTelemetry'],
-      github: '#',
+        'Full observability implementation using Loki, Grafana, Tempo, and Mimir (LGTM) for centralized logging and metrics.',
+      tags: ['Grafana', 'Prometheus', 'Loki', 'Mimir'],
+      github: 'https://github.com/tamer2004gf-ship-it/mimir-LGTM-stack/tree/main/NewTech_DevOps_Nov25-main',
       live: '#',
-      image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: project4Image,
     },
     {
-      title: 'End-to-End CI/CD Pipeline',
+      title: 'AWS DevOps End-to-End Pipeline',
       description:
-        'Automated the provisioning of cloud infrastructure and application deployment using modern DevOps practices.',
-      tags: ['Terraform', 'AWS', 'CI/CD'],
-      github: '#',
+        'A complete CI/CD lifecycle automating infrastructure as code and application delivery using modern DevOps toolchains.',
+      tags: ['CI/CD', 'GitHub Actions', 'Terraform', 'AWS'],
+      github: 'https://github.com/tamer2004gf-ship-it/aws-devops-end-to-end',
       live: '#',
-      image: 'https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: project2Image,
     },
   ];
 
@@ -107,6 +113,8 @@ const Projects = () => {
                 <div className="flex gap-4">
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gray-400 hover:text-[#d9534f] transition-colors duration-300"
                   >
                     <Github size={20} />
