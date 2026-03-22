@@ -51,13 +51,14 @@ const Hero = () => {
     >
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
+      {/* صندوق النص والأزرار */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white">
             {text.split('Tamer Sawalha').map((part, index) => (
               <span key={index}>
                 {part}
@@ -108,16 +109,19 @@ const Hero = () => {
             </button>
           </motion.div>
         </motion.div>
+      </div> {/* <-- هنا تم إغلاق صندوق النص لتجنب المشكلة */}
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 4, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <ChevronDown size={32} className="text-[#d9534f]" />
-        </motion.div>
-      </div>
+      {/* سهم النزول - تم إخراجه ليصبح مستقلاً في أسفل الشاشة */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 4, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <button onClick={() => scrollToSection('#projects')} aria-label="Scroll down">
+           <ChevronDown size={32} className="text-[#d9534f] cursor-pointer" />
+        </button>
+      </motion.div>
     </section>
   );
 };
